@@ -2,18 +2,16 @@ package atcoder.B;
 
 import org.junit.jupiter.api.Test;
 
-//import atcoder.A.Main;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MainTest {
   @Test
   void test01() {
-    assertEquals("4", Main.newGenerationABC(1));
-    assertEquals("4", Main.newGenerationABC(125));
-    assertEquals("6",  Main.newGenerationABC(126));
-    assertEquals("6",  Main.newGenerationABC(211));
-    assertEquals("8", Main.newGenerationABC(212));
-    assertEquals("8", Main.newGenerationABC(214));
+    assertEquals("C",Main.aToZString2(1,3));
+  }
+  
+  @Test
+  void test02() {
+    assertEquals("F", Main.aToZString2(2, 12));
   }
 }

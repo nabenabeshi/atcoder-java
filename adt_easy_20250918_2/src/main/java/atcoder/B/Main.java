@@ -1,55 +1,46 @@
 /*
-B - New Generation ABC  / 
+B - A to Z String 2  / 
 実行時間制限: 2 sec / メモリ制限: 1024 MiB
 
 配点 : 
 100 点
 
 問題文
-AtCoder Beginner Contest は、今回で 
-214 回目の開催となりました。
-
-今までの AtCoder Beginner Contest において、出題される問題数は次のように変化しました。
-
-1 回目から 
-125 回目までは 
-4 問
-126 回目から 
-211 回目までは 
-6 問
-212 回目から 
-214 回目までは 
-8 問
-N 回目の AtCoder Beginner Contest において出題された問題数を求めてください。
+A を 
+N 個、B を 
+N 個、…、Z を 
+N 個この順に繋げて得られる文字列の先頭から 
+X 番目の文字を求めてください。
 
 制約
-1≤N≤214
-入力は全て整数である。
+1≤N≤100
+1≤X≤N×26
+入力は全て整数
 入力
 入力は以下の形式で標準入力から与えられる。
 
-N
+N 
+X
 出力
 答えを出力せよ。
 
 入力例 1
 Copy
-214
+1 3
 出力例 1
 Copy
-8
+C
+得られる文字列は ABCDEFGHIJKLMNOPQRSTUVWXYZ です。先頭から 
+3 番目の文字は C です。
+
 入力例 2
 Copy
-1
+2 12
 出力例 2
 Copy
-4
-入力例 3
-Copy
-126
-出力例 3
-Copy
-6
+F
+得られる文字列は AABBCCDDEEFFGGHHIIJJKKLLMMNNOOPPQQRRSSTTUUVVWWXXYYZZ です。先頭から 
+12 番目の文字は F です。
  */
 package atcoder.B;
 import java.util.Scanner;
@@ -58,20 +49,28 @@ public class Main {
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
     int n = sc.nextInt();
+    int x = sc.nextInt();
     sc.close();
-    String answer = newGenerationABC(n);
-    System.out.println(answer);
+    System.out.println(aToZString2(n,x));
   }
 
-  public static String newGenerationABC(int n){
-    if(n<=125){
-      return "4";
-    }else if(n<=211){
-      return "6";
-    }else if(n<=214){
-      return "8";
-    }else{
-      return "ng";
+  public static String aToZString2(int n, int x){
+    String answer = "";
+    int cnt = 0;
+
+    for(int i=65; i<= 90; i++ ){
+      for(int j=0; j< n; j++ ){
+        cnt++;
+        if(cnt == x){
+          answer = Character.toString((char) i);
+          break;
+        }
+      }
+      if(!answer.isEmpty()){
+        break;
+      }
     }
+
+    return answer;
   }
 }

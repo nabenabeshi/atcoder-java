@@ -1,134 +1,200 @@
 /*
-A - 11/22 String  / 
+A - ファンレター 
 実行時間制限: 2 sec / メモリ制限: 1024 MiB
 
 配点 : 
-150 点
+100 点
 
 問題文
-この問題における 11/22 文字列の定義は C 問題および E 問題と同じです。
+あなたはアイドルグループ Bit♡Beat のプロデューサーです。
 
-文字列 
-T が以下の条件を全て満たすとき、
-T を 11/22 文字列 と呼びます。
+Bit♡Beat の事務所に 
+N 個のファンレターが届きました。 
+i 個目のファンレターは 
+A 
+i
+​
+  月 
+B 
+i
+​
+  日に届いたものです。
 
-∣T∣ は奇数である。ここで、
-∣T∣ は 
-T の長さを表す。
-1 文字目から 
-2
-∣T∣+1
-​
- −1 文字目までが 1 である。
-2
-∣T∣+1
-​
-  文字目が / である。
-2
-∣T∣+1
-​
- +1 文字目から 
-∣T∣ 文字目までが 2 である。
-例えば 11/22, 111/222, / は 11/22 文字列ですが、1122, 1/22, 11/2222, 22/11, //2/2/211 はそうではありません。
-
-1, 2, / からなる長さ 
-N の文字列 
-S が与えられます。
-S が 11/22 文字列であるか判定してください。
+これら 
+N 個のファンレターの日付を早い順（
+1 月 
+1 日から始めて、先に訪れる順）に出力してください。
 
 制約
-1≤N≤100
-S は 1, 2, / からなる長さ 
-N の文字列
+1≤N≤365
+A 
+i
+​
+  月 
+B 
+i
+​
+  日は平年（うるう年ではない年）において正しい日付である。
+(A 
+i
+​
+ ,B 
+i
+​
+ )
+
+=(A 
+j
+​
+ ,B 
+j
+​
+ ) 
+(i
+
+=j)
+入力される値は全て整数
 入力
 入力は以下の形式で標準入力から与えられる。
 
 N
-S
+A 
+1
+​
+  
+B 
+1
+​
+ 
+A 
+2
+​
+  
+B 
+2
+​
+ 
+⋮
+A 
+N
+​
+  
+B 
+N
+​
+ 
 出力
-S が 11/22 文字列であれば Yes を、そうでなければ No を出力せよ。
+N 行出力せよ。
+
+i 行目 
+(1≤i≤N) には、届いた日付が 
+i 番目に早いファンレターの日付の月と日を半角スペース区切りで出力せよ。
 
 入力例 1
 Copy
-5
-11/22
+3
+3 15
+1 15
+3 8
 出力例 1
 Copy
-Yes
-11/22 は問題文の 11/22 文字列の条件を満たします。
+1 15
+3 8
+3 15
+事務所には 
+3 月 
+15 日、 
+1 月 
+15 日、 
+3 月 
+8 日にファンレターが届きました。
+
+これらの日付を早い順に並べると 
+1 月 
+15 日、 
+3 月 
+8 日、 
+3 月 
+15 日となります。したがって、上記のように出力してください。
 
 入力例 2
 Copy
-1
-/
+5
+1 1
+1 2
+1 3
+1 4
+1 5
 出力例 2
 Copy
-Yes
-/ は問題文の 11/22 文字列の条件を満たします。
-
+1 1
+1 2
+1 3
+1 4
+1 5
 入力例 3
 Copy
-4
-1/22
+10
+9 21
+8 22
+10 28
+6 22
+6 26
+7 10
+5 3
+8 31
+9 4
+11 21
 出力例 3
 Copy
-No
-1/22 は問題文の 11/22 文字列の条件を満たしません。
-
-入力例 4
-Copy
-5
-22/11
-出力例 4
-Copy
-No
+5 3
+6 22
+6 26
+7 10
+8 22
+8 31
+9 4
+9 21
+10 28
+11 21
  */
 package atcoder.A;
 import java.util.Scanner;
+import java.util.Arrays;
 
 public class Main {
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
     int n = sc.nextInt();
-    String s = sc.next();
+    int[][] arr_ab = new int[n][2];
+    for(int i=0;i<n;i++){
+      arr_ab[i][0] = sc.nextInt();
+      arr_ab[i][1] = sc.nextInt();
+    }
     sc.close();
-    String answer = oneoneslatwotwostring(n,s);
-    System.out.println(answer);
+    System.out.println(sortDate(arr_ab));
   }
 
-  public static String oneoneslatwotwostring(int n, String s){
-    System.out.println("start oneoneslatwotwostring");
-    System.out.println("n:"+n+",s:"+s);
+  public static String sortDate(int[][] arr2d){
     String answer = "";
-    if(n%2==0){
-      
-      answer = "No";
-    }else if(
-      n==1
-      &&
-      s.substring(0,1).equals("/")
-    ){
-      System.out.println("n2==0 and s==\"/\"");
-      answer = "Yes";
-    }else{
-      int mid = n / 2;
-      System.out.println("mid:" + mid);
-      String nOne = s.substring(0,mid);
-      System.out.println("nOne:"+ nOne);
-      String nTwo = s.substring(mid+1);
-      System.out.println("nTwo:"+ nTwo);
 
-      String nOneRet = nOne.replaceAll("1","");
-      String nTwoRet = nTwo.replaceAll("2", "");
+    arr2d = sortDate(arr2d,1);
+    arr2d = sortDate(arr2d, 0);
 
-      if(nOneRet.isEmpty() && nTwoRet.isEmpty()){
-        answer = "Yes";
-      }else{
-        answer = "No";
-      }
+    for(int[] row : arr2d){
+      answer += row[0] + " " + row[1] + "\r\n";
     }
-    System.out.println("answer:" + answer);
-    System.out.println("end   oneoneslatwotwostring");
+
+    System.out.println("answer:"+answer);
+
     return answer;
+  }
+
+  public static int[][] sortDate(int[][] arr2d, int index){
+    Arrays.sort(arr2d, ( a ,b ) -> {
+      return Integer.compare(a[index],b[index]);
+    });
+
+    return arr2d;
   }
 }
