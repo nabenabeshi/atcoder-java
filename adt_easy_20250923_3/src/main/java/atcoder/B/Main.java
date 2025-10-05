@@ -1,5 +1,5 @@
-/*
-B - Buy a Pen  / 
+/**
+B - Buy a Pen
 配点 : 100 点
 */
 package atcoder.B;
