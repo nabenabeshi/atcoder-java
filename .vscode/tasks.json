@@ -1,0 +1,20 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Copy for AtCoder Submission",
+      "type": "shell",
+      // ★★★ Get-Content に「-Encoding Utf8」を追加 ★★★
+      "command": "Get-Content -Path '${file}' -Encoding Utf8 | Where-Object { $_ -notmatch '^package' } | Set-Clipboard",
+      "options": {
+        "shell": {
+          "executable": "powershell.exe"
+        }
+      },
+      "presentation": {
+        "reveal": "never"
+      },
+      "problemMatcher": []
+    }
+  ]
+}
