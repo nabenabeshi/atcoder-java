@@ -1,5 +1,5 @@
-/*
-A - Lexicographic Order  / 
+/**
+A - Lexicographic Order
 配点 : 100 点
  */
 package atcoder.A;
