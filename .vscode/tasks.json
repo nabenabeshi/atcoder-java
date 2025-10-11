@@ -4,15 +4,32 @@
     {
       "label": "Copy for AtCoder Submission",
       "type": "shell",
-      // ★★★ Get-Content に「-Encoding Utf8」を追加 ★★★
-      "command": "Get-Content -Path '${file}' -Encoding Utf8 | Where-Object { $_ -notmatch '^package' } | Set-Clipboard",
-      "options": {
-        "shell": {
-          "executable": "powershell.exe"
-        }
-      },
+      // ★★★ iconvコマンドを追加 ★★★
+      "command": "cat \"${file}\" | awk '($0 ~ /^ *System\\.out\\.print/) && ($0 !~ /\\/\\/ SUBMIT/) { print \"//\" $0; next } { print }' | grep -v '^package' | iconv -f utf-8 -t sjis | clip.exe",
       "presentation": {
         "reveal": "never"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "mvnCleanAll",
+      "type": "shell",
+      "command": "find . -name \"pom.xml\" -type f -exec dirname {} \\; | xargs -I {} sh -c 'echo \"Cleaning {}...\" && mvn -f {}/pom.xml clean'",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "mvnClean",
+      "type": "shell",
+      "command": "find . -name \"pom.xml\" -type f -exec dirname {} \\; | xargs -I {} sh -c 'if [ -d \"{}/target\" ]; then echo \"Cleaning {}...\" && mvn -f \"{}/pom.xml\" clean; else echo \"Skipping {}: No target directory.\"; fi'",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "clear": true
       },
       "problemMatcher": []
     }

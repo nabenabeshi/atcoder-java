@@ -20,7 +20,7 @@ public class Main {
     }
     sc.close();
     String answer = func(n, q, arr2d);
-    System.out.println(answer);
+    System.out.println(answer); // SUBMIT
   }
 
   public static String func(int n, int q, ArrayList<ArrayList<Integer>> arr2d) {
