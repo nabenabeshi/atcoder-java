@@ -22,7 +22,7 @@ public class Main {
       return "1";
     }
 
-    int iPreVal = 1;
+    int iPreVal;
     int iAns = 1;
     for(int i=2; i <= is; i++){
       iPreVal = iAns;

@@ -4,9 +4,9 @@ C - Upgrade Required
  */
 package atcoder.C;
 
-import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
 import java.util.TreeSet;
 
 public class Main {
@@ -14,9 +14,9 @@ public class Main {
     Scanner sc = new Scanner(System.in);
     int n = sc.nextInt();
     int q = sc.nextInt();
-    ArrayList<ArrayList<Integer>> arr2d = new ArrayList<ArrayList<Integer>>();
+    ArrayList<ArrayList<Integer>> arr2d = new ArrayList<>();
     for (int i = 1; i <= q; i++) {
-      arr2d.add(new ArrayList<Integer>(Arrays.asList(sc.nextInt(), sc.nextInt())));
+      arr2d.add(new ArrayList<>(Arrays.asList(sc.nextInt(), sc.nextInt())));
     }
     sc.close();
     String answer = func(n, q, arr2d);

@@ -30,14 +30,12 @@ public class Main {
       // System.out.println("cArr[i]:" + cArr[i]);
       if (cOne == cArr[i] && cTwo == ' ') {
         // System.out.println("cOne == cArr[i]");
-        continue;
       } else {
         // System.out.println("cOne == cArr[i] else");
         if (cTwo == ' ') {
           // System.out.println("cTwo == ' '");
           cTwo = cArr[i];
           // System.out.println("cTwo:" + cTwo);
-          continue;
         } else {
           // System.out.println("cTwo == ' ' else");
           if (cOne == cArr[i]) {

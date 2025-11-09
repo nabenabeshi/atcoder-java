@@ -17,7 +17,7 @@ public class Main {
   }
 
   public static String func1(int a, int b, int c){
-    String answer = "";
+    String answer;
     if(a==b || a==c || b == c){
       answer = "Yes";
     }else{

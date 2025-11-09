@@ -23,8 +23,6 @@ public class Main {
 
     long[] aPrefixSum = new long[N + 1];
     long[] bPrefixSum = new long[N + 1];
-    int aCnt = 0;
-    int bCnt = 0;
 
     // 累積和の計算
     for (int i = 1; i <= N; i++) {

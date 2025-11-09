@@ -24,7 +24,6 @@ public class Main {
   public static String func(int N,int K, String S) {
 
     List<String> list = new ArrayList<>();
-    List<String> ansList = new ArrayList<>();
 
     for (int i=0;i<(N-K+1);i++) {
       StringBuilder sb = new StringBuilder();
